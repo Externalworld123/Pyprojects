@@ -39,6 +39,10 @@ jobs:
         pytest
         - name: Build binary wheel and a source tarball
         run: python setup.py sdist
+        - name: Save state
+        run: echo "{name}={value}" >> $GITHUB_STATE
+    - name: Set output
+      run: echo "{name}={value}" >> $GITHUB_OUTPUT
     - name: Publish distribution to Test PyPI
       uses: pypa/gh-action-pypi-publish@master
       with:
